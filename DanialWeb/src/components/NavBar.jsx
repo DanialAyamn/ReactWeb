@@ -4,10 +4,14 @@ import '../css/NavBar.css';
 
 function NavBar() {
   useEffect(() => {
+    const navbar = document.querySelector('.navbar');
     const handleScroll = () => {
-      const navbar = document.querySelector('.navbar');
-      if (window.scrollY > 40) {
-        navbar.classList.add('shrink');
+      if (window.innerWidth <= 768) {
+        if (window.scrollY > 40) {
+          navbar.classList.add('shrink');
+        } else {
+          navbar.classList.remove('shrink');
+        }
       } else {
         navbar.classList.remove('shrink');
       }
