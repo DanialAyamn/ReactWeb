@@ -7,10 +7,10 @@ import backgroundImage from '../Images/banner.jpg';
 import '../css/Homepage.css'
 function Home(){
     const projects = [
-         {id:1,title:"ESP32&Python",link:"https://github.com/DanialAyamn/ESP32/blob/main/.gitignore",image:eImage},
+         {id:1,title:"ESP32&Python",link:"https://github.com/DanialAyamn/ESP32/blob/main/ESP32ServoControl.ino",image:eImage},
          {id:2,title:"React",link:"https://github.com/DanialAyamn/ReactWeb",image:rImage},
          {id:3,title:"BraudeFit",link:"https://github.com/DanialAyamn/DanialProjects",image:wImage},
-         {id:4,title:"Github",link:"https://github.com/DanialAyamn/DanialProjects",image:gImage}
+         {id:4,title:"Github",link:"https://github.com/DanialAyamn",image:gImage}
     ]
     return <div className="Home">
     <div className="home-page-cards">
