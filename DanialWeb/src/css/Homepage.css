@@ -1,3 +1,12 @@
+
+body {
+  --bg-color: #0f0f0f;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-main);
+}
 .Home {
   width: 100%;
   min-height: 100vh;

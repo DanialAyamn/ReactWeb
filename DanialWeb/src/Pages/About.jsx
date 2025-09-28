@@ -3,6 +3,7 @@ import cvimage from '../Images/cv.webp';
 
 function About() {
   return (
+    
     <section className="about-container">
       <header>
         <h1>About Me</h1>

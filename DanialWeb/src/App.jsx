@@ -5,9 +5,15 @@ import Card from './components/Projectcard'
 import About from './Pages/About'
 import { Routes, Route } from 'react-router-dom'
 import NavBar from './components/NavBar'
+import ScrollToTop from "./components/ScrollToTop";
+
+
+
 function App() {
   return (
-    <div>
+    <>
+      
+      <ScrollToTop />
       <NavBar />
       <main className="main-app">
         <Routes>
@@ -16,7 +22,7 @@ function App() {
           <Route path='/about' element={<About/>}/>
         </Routes>
       </main>
-    </div>
+    </>
   );
 }
 
