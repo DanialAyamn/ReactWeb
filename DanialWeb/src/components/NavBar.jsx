@@ -1,19 +1,21 @@
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import '../css/NavBar.css';
 
 function NavBar() {
+  const navbarRef = useRef(null);
+
   useEffect(() => {
-    const navbar = document.querySelector('.navbar');
     const handleScroll = () => {
+      if (!navbarRef.current) return;
       if (window.innerWidth <= 768) {
         if (window.scrollY > 40) {
-          navbar.classList.add('shrink');
+          navbarRef.current.classList.add('shrink');
         } else {
-          navbar.classList.remove('shrink');
+          navbarRef.current.classList.remove('shrink');
         }
       } else {
-        navbar.classList.remove('shrink');
+        navbarRef.current.classList.remove('shrink');
       }
     };
     window.addEventListener('scroll', handleScroll);
@@ -21,7 +23,7 @@ function NavBar() {
   }, []);
 
   return (
-    <nav className="navbar">
+    <nav className="navbar" ref={navbarRef}>
         <div className="navbar-b">
             <Link to="/">DanialAbuYamn</Link>
         </div>
@@ -33,4 +35,4 @@ function NavBar() {
     </nav>
   );
 }
-export default NavBar
+export default NavBar;
