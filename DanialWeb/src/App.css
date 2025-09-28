@@ -1,0 +1,116 @@
+
+
+:root {
+  --bg-color: #0f0f0f;
+  --accent-color: #4b8579;
+  --text-color: #ffffff;
+  --card-bg: #1a1a1a;
+  --card-hover: #222222;
+  --transition: all 0.3s ease;
+  --font-main: 'Poppins', sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-main);
+}
+
+.Home {
+  width: 100%;
+  min-height: 100vh;
+  padding: 4rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.home-page-cards {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.home-page-title {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.home-page-title h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--accent-color);
+  text-transform: uppercase;
+  position: relative;
+}
+
+.home-page-title h2::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  background-color: var(--accent-color);
+  margin: 1rem auto 0 auto;
+  border-radius: 2px;
+}
+
+.home-page-cards .project-card-wrapper {
+  background-color: var(--card-bg);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: var(--transition);
+  box-shadow: 0 0 0 transparent;
+}
+
+.project-card-wrapper:hover {
+  background-color: var(--card-hover);
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5),
+              0 0 20px rgba(0, 230, 184, 0.3);
+}
+
+.project-card-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 1rem;
+  text-align: center;
+
+  background: linear-gradient(90deg, var(--accent-color), #00c4ff);
+  background-clip: text;          
+  -webkit-background-clip: text;  
+  -webkit-text-fill-color: transparent;
+  color: transparent;            
+}
+
+.home-page-cards > .home-page-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+/* עיצוב לתמונות בכרטיסים */
+.project-card-wrapper img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  transition: var(--transition);
+}
+
+.project-card-wrapper:hover img {
+  transform: scale(1.05);
+}
+
+/* רספונסיביות */
+@media (max-width: 600px) {
+  .home-page-title h2 {
+    font-size: 2.2rem;
+  }
+
+  .project-card-title {
+    font-size: 1.2rem;
+  }
+}

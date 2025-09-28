@@ -1,0 +1,117 @@
+
+body {
+    
+    overflow-x: hidden; 
+    margin: 0; 
+    width: 100%;
+}
+
+:root {
+  --primary-color: #63eed7; /* Original bright cyan */
+  --shadow-color: rgba(0, 0, 0, 0.2);
+  --bg-dark: #0f0f0f;
+  --text-light: #ffffff;
+  --transition: all 0.3s ease;
+
+  /* NEW: Glow color variables for consistency */
+  --glow-color: #00ffc8; /* Slightly brighter for the glow */
+  
+  --link-glow: 0 0 8px rgba(0, 255, 200, 0.5);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 92vw;
+  padding: 18px 4.2rem;
+  background-color: var(--bg-dark);
+  /* Enhanced box-shadow for a soft outer glow */
+  box-shadow: 0 4px 20px var(--shadow-color),
+              0 0 15px rgba(240, 241, 241, 0.25); /* Subtle Navbar Glow */
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  /* Optional: Background slight blur for a modern look */
+  backdrop-filter: blur(5px);
+}
+
+/* Brand/Logo Section */
+.navbar-b {
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.navbar-b a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  transition: var(--transition);
+  /* Text Shadow for the logo glow */
+  text-shadow: var(--logo-glow);
+}
+
+.navbar-b a:hover {
+  color: #00ffc8; /* Brighter on hover */
+  text-shadow: 0 0 20px rgba(0, 255, 200, 1); /* Intense glow on hover */
+}
+
+/* Navigation Links Section */
+.navbar-c {
+  display: flex;
+  gap: 25px;
+}
+
+.navbar-c a {
+  color: var(--text-light);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  position: relative;
+  transition: var(--transition);
+  font-family: 'Poppins', sans-serif;
+  /* Initial subtle text shadow for a faint glow */
+  text-shadow: 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+/* Underline (Glow line) */
+.navbar-c a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  left: 0;
+  bottom: -5px;
+  background-color: var(--primary-color);
+  transition: width 0.3s ease;
+  /* Box Shadow for the underline glow */
+  box-shadow: 0 0 8px var(--glow-color);
+}
+
+.navbar-c a:hover {
+  color: var(--glow-color); /* Use the brighter glow color */
+  /* Intense text shadow on hover */
+  text-shadow: var(--link-glow);
+}
+
+.navbar-c a:hover::after {
+  width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .navbar-c {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 10px;
+  }
+}
