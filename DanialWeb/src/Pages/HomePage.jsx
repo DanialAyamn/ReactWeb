@@ -13,11 +13,24 @@ function Home(){
          {id:4,title:"Github",link:"https://github.com/DanialAyamn",image:gImage}
     ]
     return <div className="Home">
+    <div className="home-banner">
+    {/* Floating shapes */}
+    <div className="floating-shape shape-1"></div>
+    <div className="floating-shape shape-2"></div>
+    <div className="floating-shape shape-3"></div>
+    
+    {/* Particles */}
+    <div className="particle"></div>
+    <div className="particle"></div>
+    <div className="particle"></div>
+    <div className="particle"></div>
+    <div className="particle"></div>
+    
+    {/* Your content */}
+    <h1>DANIAL ABU YAMN</h1>
+    <p>SOFTWARE ENGINEERING STUDENT</p>
+</div>
     <div className="home-page-cards">
-            <section className="home-banner" style={{ backgroundImage: `url(${backgroundImage})` }}>
-                <h1>Danial Abu Yamn</h1>
-                <p>3rd Year Software Engineering Student</p>
-            </section>
             <div className="home-page-title">
                 <h2>My Projects</h2>
             </div>

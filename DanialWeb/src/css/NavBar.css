@@ -1,10 +1,10 @@
-body {
-    
-    overflow-x: hidden; 
-    margin: 0; 
-    width: 100%;
+body, html {
+  margin: 0;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;   /* <-- allow vertical scroll */
+  min-height: 100%;   /* <-- ensures body can grow */
 }
-
 :root {
   --primary-color: #63eed7; /* Original bright cyan */
   --shadow-color: rgba(0, 0, 0, 0.2);
