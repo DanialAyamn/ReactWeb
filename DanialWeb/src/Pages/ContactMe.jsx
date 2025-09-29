@@ -3,7 +3,7 @@ import { useRef } from "react";
 import emailjs from "emailjs-com";
 function ContactMe() {
   const form = useRef();
-
+  const successMsg = useRef();
   const sendEmail = (e) => {
     e.preventDefault();
 
@@ -17,6 +17,7 @@ function ContactMe() {
       .then(
         (result) => {
           console.log("Email sent:", result.text);
+          successMsg.current.style.display = "block";
           form.current.reset();
         },
         (error) => {
@@ -36,6 +37,13 @@ function ContactMe() {
           <textarea placeholder="Your Message" name="message" required />
           <button type="submit">Send</button>
         </form>
+        <div
+          ref={successMsg}
+          className="success-message"
+          style={{ display: "none" }}
+        >
+          Message sent successfully!
+        </div>
       </div>
     </div>
   );

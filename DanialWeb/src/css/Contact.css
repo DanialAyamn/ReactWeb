@@ -1,45 +1,117 @@
 :root {
-  --bg-dark: #0f0f0f;
+  --bg-dark: #0a0a0a;
+  --bg-gradient: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
   --accent-color: #00e6b8;
   --accent-hover: #00c4ff;
+  --accent-glow: rgba(0, 230, 184, 0.3);
   --text-light: #ffffff;
-  --card-bg: #1a1a1a;
-  --shadow-color: rgba(0, 0, 0, 0.4);
-  --transition: all 0.3s ease;
+  --text-muted: #a0a0a0;
+  --card-bg: rgba(26, 26, 26, 0.8);
+  --input-bg: #1e1e1e;
+  --input-focus: #252525;
+  --shadow-color: rgba(0, 0, 0, 0.6);
+  --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   --font-main: 'Poppins', sans-serif;
 }
 
 .ContactMe {
   min-height: 100vh;
-  background-color: var(--bg-dark);
+  background: var(--bg-gradient);
   color: var(--text-light);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  padding: 4rem 2rem;
+  justify-content: center;
+  padding: rem 2rem;
   font-family: var(--font-main);
+  position: relative;
+  overflow: hidden;
 }
 
-.ContactMe p {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 2rem;
-  color: var(--accent-color);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  text-align: center;
+/* Animated Background Elements */
+.ContactMe::before {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+  top: -250px;
+  right: -250px;
+  animation: float 8s ease-in-out infinite;
+  pointer-events: none;
 }
+.success-message {
+  background: linear-gradient(135deg, rgba(0, 230, 184, 0.1), rgba(0, 196, 255, 0.1));
+  border: 1px solid var(--accent-color);
+  padding: 1rem;
+  border-radius: 12px;
+  text-align: center;
+  color: var(--accent-color);
+  font-weight: 600;
+  animation: slideUp 0.5s ease-out;
+}
+
+.ContactMe::after {
+  content: '';
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(0, 196, 255, 0.2) 0%, transparent 70%);
+  bottom: -200px;
+  left: -200px;
+  animation: float 10s ease-in-out infinite reverse;
+  pointer-events: none;
+}
+
+/* Header */
+.ContactMe p {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+  animation: slideDown 0.6s ease-out;
+  position: relative;
+  z-index: 1;
+}
+
+
+
 
 /* Contact Form Container */
 .contact-methods {
-  background-color: var(--card-bg);
-  padding: 2.5rem 2rem;
-  border-radius: 20px;
-  box-shadow: 0 8px 25px var(--shadow-color);
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  padding: 3rem 2.5rem;
+  border-radius: 24px;
+  box-shadow: 0 20px 60px var(--shadow-color);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   width: 100%;
-  max-width: 600px;
-  animation: fadeIn 0.6s ease-in;
+  max-width: 650px;
+  animation: scaleIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 1;
+}
+
+/* Glowing border effect on hover */
+.contact-methods::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+  border-radius: 24px;
+  opacity: 0;
+  transition: var(--transition);
+  z-index: -1;
+}
+
+.contact-methods:hover::before {
+  opacity: 0.2;
 }
 
 /* Form Styles */
@@ -49,55 +121,108 @@
   gap: 1.5rem;
 }
 
+
 .contact-methods input,
 .contact-methods textarea {
-  padding: 0.9rem 1rem;
-  border: none;
-  border-radius: 10px;
-  background-color: #2a2a2a;
+  padding: 1rem 1.2rem;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  background-color: var(--input-bg);
   color: var(--text-light);
   font-size: 1rem;
+  font-family: var(--font-main);
   outline: none;
   transition: var(--transition);
   resize: none;
+  position: relative;
 }
 
 .contact-methods input:focus,
 .contact-methods textarea:focus {
-  border: 2px solid var(--accent-color);
-  background-color: #333333;
-  box-shadow: 0 0 10px var(--accent-color);
+  border-color: var(--accent-color);
+  background-color: var(--input-focus);
+  box-shadow: 0 0 20px var(--accent-glow), 0 4px 12px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+.contact-methods input:focus + label,
+.contact-methods textarea:focus + label {
+  color: var(--accent-color);
+}
+
+/* Placeholder styling */
+.contact-methods input::placeholder,
+.contact-methods textarea::placeholder {
+  color: #666;
+  transition: var(--transition);
+}
+
+.contact-methods input:focus::placeholder,
+.contact-methods textarea:focus::placeholder {
+  color: #888;
+  transform: translateX(5px);
 }
 
 .contact-methods textarea {
-  height: 120px;
+  height: 140px;
+  line-height: 1.6;
 }
+
+
 
 /* Submit Button */
 .contact-methods button {
-  padding: 0.9rem 1.5rem;
+  padding: 1.1rem 2rem;
   border: none;
-  border-radius: 12px;
-  background: linear-gradient(90deg, var(--accent-color), var(--accent-hover));
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
   color: var(--bg-dark);
   font-size: 1.1rem;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   transition: var(--transition);
-  box-shadow: 0 4px 15px rgba(0, 230, 184, 0.4);
+  box-shadow: 0 8px 24px rgba(0, 230, 184, 0.4);
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 0.5rem;
+}
+
+/* Button shimmer effect */
+.contact-methods button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.contact-methods button:hover::before {
+  left: 100%;
 }
 
 .contact-methods button:hover {
-  background: linear-gradient(90deg, var(--accent-hover), var(--accent-color));
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(0, 196, 255, 0.4);
+  background: linear-gradient(135deg, var(--accent-hover), var(--accent-color));
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 196, 255, 0.5);
 }
+
+.contact-methods button:active {
+  transform: translateY(-2px);
+}
+
+/* Success Message */
+
 
 /* Animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -105,13 +230,96 @@
   }
 }
 
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate(30px, -30px) rotate(120deg);
+  }
+  66% {
+    transform: translate(-20px, 20px) rotate(240deg);
+  }
+}
+
 /* Responsive */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+  .ContactMe p {
+    font-size: 2.5rem;
+  }
+
+
+  .contact-methods {
+    padding: 2.5rem 2rem;
+    border-radius: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ContactMe {
+    padding: 3rem 1.5rem;
+  }
+
   .ContactMe p {
     font-size: 2rem;
+    letter-spacing: 1px;
   }
 
   .contact-methods {
     padding: 2rem 1.5rem;
+  }
+
+  .contact-methods input,
+  .contact-methods textarea {
+    padding: 0.9rem 1rem;
+  }
+
+  .contact-methods button {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
