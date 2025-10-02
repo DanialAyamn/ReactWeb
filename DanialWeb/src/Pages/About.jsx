@@ -17,7 +17,7 @@ function About() {
             Feel free to explore my projects and get in touch if you'd like to collaborate or learn more about my work.
           </p>
         </div>
-        <a href="/cv.pdf" download className="cv-button">Download CV</a>
+        <a href="/CVDanialAbuYamn.pdf" download className="cv-button">Download CV</a>
 
       </div>
     </section>
